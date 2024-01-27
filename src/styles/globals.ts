@@ -4,6 +4,10 @@ export const theme = extendTheme({
   colors: {
     background: "#1b2431",
     foreground: "#edf4ff",
+    highlight: {
+      primary: "#84b1fa",
+      secondary: "#297aff",
+    },
     primary: {
       "200": "#80b0ff",
       "300": "#506587",
