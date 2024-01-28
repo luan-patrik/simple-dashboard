@@ -1,8 +1,9 @@
 import { theme } from "@/styles/globals";
 import {
   Bar,
-  BarChart,
+  ComposedChart,
   Legend,
+  Line,
   ResponsiveContainer,
   Tooltip,
   XAxis,
@@ -10,24 +11,24 @@ import {
 } from "recharts";
 import { Card } from "./Card";
 
-interface BarCardDashboardProps {
+interface ComposedCardDashboardProps {
   data: { name: string; uv: number; pv: number }[];
 }
 
-const BarCardDashboard = ({ data }: BarCardDashboardProps) => {
+const ComposedCardDashboard = ({ data }: ComposedCardDashboardProps) => {
   return (
-    <Card w={"100%"} h={"20rem"}>
+    <Card w={"100%"} h={"26rem"}>
       <ResponsiveContainer>
-        <BarChart
+        <ComposedChart
           data={data}
-          barSize={20}
           margin={{ top: 20, bottom: 20, right: 20, left: 20 }}
         >
           <XAxis
-            dataKey="name"
-            scale="point"
+            dataKey={"name"}
+            scale={"point"}
             padding={{ left: 10, right: 10 }}
           />
+
           <YAxis />
           <Tooltip
             contentStyle={{
@@ -38,13 +39,18 @@ const BarCardDashboard = ({ data }: BarCardDashboardProps) => {
           <Legend />
           <Bar
             dataKey="uv"
+            barSize={20}
             fill={theme.colors.highlight.primary}
-            background={{ fill: theme.colors.foreground }}
           />
-        </BarChart>
+          <Line
+            type="monotone"
+            dataKey="pv"
+            stroke={theme.colors.highlight.secondary}
+          />
+        </ComposedChart>
       </ResponsiveContainer>
     </Card>
   );
 };
 
-export default BarCardDashboard;
+export default ComposedCardDashboard;
