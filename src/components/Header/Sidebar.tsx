@@ -1,6 +1,12 @@
 import { Flex, Icon, List, ListItem, Text, VStack } from "@chakra-ui/react";
 import { motion, useCycle } from "framer-motion";
-import { ChevronLeft, ChevronRight, LayoutGridIcon } from "lucide-react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  LayoutGridIcon,
+  LogOut,
+} from "lucide-react";
+import { signOut } from "next-auth/react";
 import { SidebarButton } from "./SidebarButton";
 
 export const Sidebar = () => {
@@ -24,6 +30,7 @@ export const Sidebar = () => {
       bg="primary.500"
       gap={10}
       p={4}
+      pos={"relative"}
     >
       <Flex
         w={"100%"}
@@ -45,20 +52,20 @@ export const Sidebar = () => {
           )}
         </SidebarButton>
       </Flex>
-      <List w={"100%"}>
-        <ListItem>
-          <SidebarButton
-            href="/dashboard"
-            display="inline-flex"
-            overflow={"hidden"}
-            justifyContent={"start"}
-            w={"100%"}
-          >
-            <Icon h={"auto"} w={"auto"} as={LayoutGridIcon} />
-            {open ? <Text>Dashboard</Text> : null}
-          </SidebarButton>
-        </ListItem>
-      </List>
+      <VStack overflow={"hidden"} w={"100%"} flex={1}>
+        <List w={"100%"} flex={1}>
+          <ListItem>
+            <SidebarButton href="/dashboard" w={"100%"}>
+              <Icon h={"auto"} w={"auto"} as={LayoutGridIcon} />
+              {open ? <Text>Dashboard</Text> : null}
+            </SidebarButton>
+          </ListItem>
+        </List>
+        <SidebarButton w={"100%"} as={"button"} onClick={async () => signOut()}>
+          <Icon h={"auto"} w={"auto"} as={LogOut} />
+          {open ? <Text>Sair</Text> : null}
+        </SidebarButton>
+      </VStack>
     </VStack>
   );
 };

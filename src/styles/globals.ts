@@ -1,4 +1,6 @@
 import { extendTheme } from "@chakra-ui/react";
+import { Nunito } from "next/font/google";
+const nunito = Nunito({ subsets: ["latin"], preload: true, style: ["normal"] });
 
 export const theme = extendTheme({
   colors: {
@@ -14,6 +16,9 @@ export const theme = extendTheme({
       "400": "#394861",
       "500": "#273142",
     },
+  },
+  fonts: {
+    body: nunito.style.fontFamily,
   },
   styles: {
     global: {
