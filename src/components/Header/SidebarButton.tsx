@@ -7,6 +7,7 @@ const SidebarButton = forwardRef<LinkProps, "a">(({ ...props }, ref) => {
       as={NextLink}
       ref={ref}
       {...props}
+      display={"inline-flex"}
       variant="ghost"
       gap={6}
       size="xs"
