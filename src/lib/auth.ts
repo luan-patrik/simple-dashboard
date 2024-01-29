@@ -10,7 +10,7 @@ export const config = {
   providers: [
     EmailProvider({
       server: process.env.EMAIL_SERVER,
-      from: "Luan Patrik <onboarding@resend.dev>",
+      from: `Luan Patrik <${process.env.EMAIL_FROM}>`,
       secret: process.env.EMAIL_SECRET,
       sendVerificationRequest,
     }),

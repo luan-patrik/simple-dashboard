@@ -10,7 +10,7 @@ export const sendVerificationRequest = async (
 
   try {
     await resend.emails.send({
-      from: "Luan Patrik <onboarding@resend.dev>",
+      from: `Luan Patrik <${process.env.EMAIL_FROM}>`,
       to: identifier,
       subject: `Magic Link de ${host}`,
       text: text({ url, host }),
