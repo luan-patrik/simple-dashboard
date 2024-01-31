@@ -13,6 +13,7 @@ export const config = {
       from: `Luan Patrik <${process.env.EMAIL_FROM}>`,
       secret: process.env.EMAIL_SECRET,
       sendVerificationRequest,
+      maxAge: 5 * 60, // 5 minutes
     }),
   ],
 
